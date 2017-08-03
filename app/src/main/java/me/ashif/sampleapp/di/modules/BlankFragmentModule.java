@@ -15,7 +15,8 @@ import me.ashif.sampleapp.ui.fragments.BlankFragment;
 public class BlankFragmentModule {
     /*
     all the dependencies specific to the fragment must
-    be listed here
+    be listed here,optional you can skip this class creation
+    if you dont have any dependencies specific to this fragment
      */
 
     @Provides

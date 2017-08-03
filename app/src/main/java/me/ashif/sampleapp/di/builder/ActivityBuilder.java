@@ -3,7 +3,6 @@ package me.ashif.sampleapp.di.builder;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import me.ashif.sampleapp.MainActivity;
-import me.ashif.sampleapp.di.modules.MainActivityModule;
 
 /**
  * Created by Ashif on 3/8/17,August,2017
@@ -14,10 +13,12 @@ import me.ashif.sampleapp.di.modules.MainActivityModule;
 public abstract class ActivityBuilder {
 
     /*
-    all activities that are to be attached to
+    All activities that are to be attached to
     dagger should register here.
+
+    Application has Activities,Activities has Fragments
      */
 
-    @ContributesAndroidInjector(modules = MainActivityModule.class)
+    @ContributesAndroidInjector(modules = FragmentBuilder.class)
     abstract MainActivity providesMainActivity();
 }

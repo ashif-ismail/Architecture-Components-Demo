@@ -2,7 +2,6 @@ package me.ashif.sampleapp.di.builder;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
-import me.ashif.sampleapp.di.modules.BlankFragmentModule;
 import me.ashif.sampleapp.ui.fragments.BlankFragment;
 
 /**

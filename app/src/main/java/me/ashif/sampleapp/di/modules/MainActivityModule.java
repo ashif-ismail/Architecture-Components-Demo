@@ -13,6 +13,13 @@ import me.ashif.sampleapp.MainActivity;
 
 @Module
 public class MainActivityModule {
+
+    /*
+   all the dependencies specific to the activity must
+   be listed here,optional you can skip this class creation
+   if you dont have any dependencies specific to this activity
+    */
+
     @Provides
     @Singleton
     public MainActivity providesMainActivty(MainActivity mainActivity){

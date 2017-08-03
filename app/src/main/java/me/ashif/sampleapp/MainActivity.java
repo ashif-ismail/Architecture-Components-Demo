@@ -7,34 +7,20 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
-import me.ashif.sampleapp.R;
 import me.ashif.sampleapp.databinding.ActivityMainBinding;
-import me.ashif.sampleapp.di.modules.AppModule;
 import me.ashif.sampleapp.util.AppUtils;
 
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector{
 
-    private ActivityMainBinding mBinding;
-
     @Inject DispatchingAndroidInjector<Fragment> mDispatchingAndroidInjector;
     @Inject AppUtils mAppUtils;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
-        String something = mAppUtils.ShowMessage();
-        mBinding.message.setText(something);
-        mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
+    private ActivityMainBinding mBinding;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -43,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mBinding.message.setText(R.string.title_home);
+                    mBinding.message.append("\n" + mAppUtils.ShowMessage());
                     return true;
                 case R.id.navigation_dashboard:
                     mBinding.message.setText(R.string.title_dashboard);
@@ -56,6 +43,18 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
             return false;
         }
     };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        setListeners();
+    }
+
+    private void setListeners() {
+        mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
 
     @Override
     public AndroidInjector<Fragment> supportFragmentInjector() {

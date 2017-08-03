@@ -19,10 +19,11 @@ import me.ashif.sampleapp.config.SampleApp;
 
 public class AppInjector {
     private AppInjector() {}
-    public static void init(SampleApp sunnahApp) {
-        DaggerAppComponent.builder().application(sunnahApp)
-                .build().inject(sunnahApp);
-        sunnahApp.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+
+    public static void init(SampleApp sampleApp) {
+        DaggerAppComponent.builder().application(sampleApp)
+                .build().inject(sampleApp);
+        sampleApp.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 handleActivity(activity);
