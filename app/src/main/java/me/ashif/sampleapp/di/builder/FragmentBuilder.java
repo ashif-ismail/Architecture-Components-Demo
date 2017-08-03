@@ -8,4 +8,8 @@ import dagger.Module;
  */
 @Module
 public class FragmentBuilder {
+    /*
+    all the fragments which are to be attached to activities
+    which are in-turn registered with dagger should be listed here
+     */
 }
