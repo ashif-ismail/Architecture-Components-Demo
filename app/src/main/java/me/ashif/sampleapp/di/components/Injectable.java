@@ -6,4 +6,5 @@ package me.ashif.sampleapp.di.components;
  */
 
 public interface Injectable {
+    //to be implemented by the Fragments
 }
