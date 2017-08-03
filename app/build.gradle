@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+
+project.ext {
+    dagger_version = "2.11"
+    espresso_core = "2.2.2"
+    appcompat = "26.0.0"
+    junit = "4.12"
+    constraint = "1.0.2"
+}
+
+android {
+    dataBinding {
+        enabled true
+    }
+    compileSdkVersion 26
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "me.ashif.sampleapp"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation "com.android.support:appcompat-v7:$project.appcompat"
+    testImplementation "junit:junit:$project.junit"
+    implementation "com.android.support:design:$project.appcompat"
+    implementation "com.android.support.constraint:constraint-layout:$project.constraint"
+    implementation "com.android.support:support-vector-drawable:$project.appcompat"
+
+    compile "com.google.dagger:dagger:$project.dagger_version"
+    compile "com.google.dagger:dagger-android:$project.dagger_version"
+    compile "com.google.dagger:dagger-android-support:$project.dagger_version"
+
+    annotationProcessor "com.google.dagger:dagger-android-processor:$project.dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.dagger_version"
+    implementation "com.android.support:support-v4:$project.appcompat"
+}
