@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.ashif.sampleapp.R;
+import me.ashif.sampleapp.di.components.Injectable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,12 +17,16 @@ import me.ashif.sampleapp.R;
  * {@link BlankFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class BlankFragment extends Fragment {
+public class BlankFragment extends Fragment implements Injectable{
 
     private OnFragmentInteractionListener mListener;
 
     public BlankFragment() {
         // Required empty public constructor
+    }
+
+    public static BlankFragment newInstance(){
+        return new BlankFragment();
     }
 
 
