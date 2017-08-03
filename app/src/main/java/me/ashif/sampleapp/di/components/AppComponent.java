@@ -16,6 +16,15 @@ import me.ashif.sampleapp.di.modules.AppModule;
  * github.com/SheikhZayed
  */
 
+
+/**
+ * AppComponent --> ActivityBuilder(in which all the activities of the app gets listed)
+ * --> FragmentsBuilder via Modules.
+ * <p>
+ * Basically Appcomponent talks to Activity Builder which then talks to FragmentsBuilder.
+ * <p>
+ * So, AppComponent --> ActivityBuilder --> FragmentsBuilder
+ */
 @Singleton
 @Component(modules = {
         AndroidInjectionModule.class,
