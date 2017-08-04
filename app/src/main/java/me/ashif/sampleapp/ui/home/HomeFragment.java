@@ -1,4 +1,4 @@
-package me.ashif.sampleapp.ui.fragments;
+package me.ashif.sampleapp.ui.home;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,19 +14,19 @@ import me.ashif.sampleapp.di.components.Injectable;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BlankFragment.OnFragmentInteractionListener} interface
+ * {@link HomeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class BlankFragment extends Fragment implements Injectable{
+public class HomeFragment extends Fragment implements Injectable{
 
     private OnFragmentInteractionListener mListener;
 
-    public BlankFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
-    public static BlankFragment newInstance(){
-        return new BlankFragment();
+    public static HomeFragment newInstance(){
+        return new HomeFragment();
     }
 
 

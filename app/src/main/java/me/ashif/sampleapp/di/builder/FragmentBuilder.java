@@ -2,7 +2,7 @@ package me.ashif.sampleapp.di.builder;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
-import me.ashif.sampleapp.ui.fragments.BlankFragment;
+import me.ashif.sampleapp.ui.home.HomeFragment;
 
 /**
  * Created by Ashif on 3/8/17,August,2017
@@ -16,5 +16,5 @@ public abstract class FragmentBuilder {
      */
 
     @ContributesAndroidInjector
-    abstract BlankFragment providesBlankFragment();
+    abstract HomeFragment providesBlankFragment();
 }

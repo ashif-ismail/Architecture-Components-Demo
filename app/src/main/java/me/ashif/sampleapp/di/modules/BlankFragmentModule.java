@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import me.ashif.sampleapp.ui.fragments.BlankFragment;
+import me.ashif.sampleapp.ui.home.HomeFragment;
 
 /**
  * Created by Ashif on 3/8/17,August,2017
@@ -21,7 +21,7 @@ public class BlankFragmentModule {
 
     @Provides
     @Singleton
-    public BlankFragment providesBlankFragment(BlankFragment blankFragment){
-        return blankFragment;
+    public HomeFragment providesBlankFragment(HomeFragment homeFragment){
+        return homeFragment;
     }
 }
