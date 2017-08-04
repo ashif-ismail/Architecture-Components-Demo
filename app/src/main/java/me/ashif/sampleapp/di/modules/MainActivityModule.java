@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import me.ashif.sampleapp.MainActivity;
+import me.ashif.sampleapp.view.ui.MainActivity;
 
 /**
  * Created by Ashif on 3/8/17,August,2017

@@ -1,10 +1,11 @@
-package me.ashif.sampleapp;
+package me.ashif.sampleapp.view.ui;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -13,7 +14,9 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import me.ashif.sampleapp.R;
 import me.ashif.sampleapp.databinding.ActivityMainBinding;
+import me.ashif.sampleapp.view.ui.home.HomeFragment;
 import me.ashif.sampleapp.util.AppUtils;
 
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector{
@@ -26,21 +29,22 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mBinding.message.setText(R.string.title_home);
-                    mBinding.message.append("\n" + mAppUtils.ShowMessage());
-                    return true;
+                    selectedFragment = HomeFragment.newInstance();
+                    break;
                 case R.id.navigation_dashboard:
-                    mBinding.message.setText(R.string.title_dashboard);
-                    mBinding.message.append(" " +mAppUtils.ShowMessage());
-                    return true;
+                    selectedFragment = HomeFragment.newInstance();
+                    break;
                 case R.id.navigation_notifications:
-                    mBinding.message.setText(R.string.title_notifications);
-                    mBinding.message.append(" " +mAppUtils.ShowMessage());
-                    return true;
+                    selectedFragment = HomeFragment.newInstance();
+                    break;
             }
-            return false;
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.parent, selectedFragment);
+            transaction.commit();
+            return true;
         }
     };
 
@@ -49,10 +53,17 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        setListeners();
+        setViewListeners();
+        showHomeAsDefault();
     }
 
-    private void setListeners() {
+    private void showHomeAsDefault() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.parent, HomeFragment.newInstance());
+        transaction.commit();
+    }
+
+    private void setViewListeners() {
         mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

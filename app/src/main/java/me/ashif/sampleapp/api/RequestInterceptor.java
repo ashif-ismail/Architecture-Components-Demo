@@ -1,4 +1,4 @@
-package me.ashif.sampleapp.network;
+package me.ashif.sampleapp.api;
 
 import java.io.IOException;
 

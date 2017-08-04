@@ -1,4 +1,4 @@
-package me.ashif.sampleapp.config;
+package me.ashif.sampleapp.conf;
 
 import android.app.Activity;
 import android.app.Application;

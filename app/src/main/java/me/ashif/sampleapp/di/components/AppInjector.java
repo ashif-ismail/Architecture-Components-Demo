@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentManager;
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
 import dagger.android.support.HasSupportFragmentInjector;
-import me.ashif.sampleapp.config.SampleApp;
+import me.ashif.sampleapp.conf.SampleApp;
 
 /**
  * Created by Ashif on 3/8/17,August,2017

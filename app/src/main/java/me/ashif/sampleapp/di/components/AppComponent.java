@@ -7,7 +7,7 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
-import me.ashif.sampleapp.config.SampleApp;
+import me.ashif.sampleapp.conf.SampleApp;
 import me.ashif.sampleapp.di.builder.ActivityBuilder;
 import me.ashif.sampleapp.di.modules.AppModule;
 

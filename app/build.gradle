@@ -41,6 +41,10 @@ android {
         exclude 'META-INF/license'
         exclude 'META-INF/license.txt'
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -80,4 +84,5 @@ dependencies {
 
     //RxJava2 Support for Room
     compile "android.arch.persistence.room:rxjava2:$project.arch_components"
+    implementation "com.android.support:cardview-v7:$project.appcompat"
 }
