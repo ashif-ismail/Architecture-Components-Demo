@@ -2,6 +2,7 @@ package me.ashif.sampleapp.di.builder;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
+import me.ashif.sampleapp.di.modules.HomeFragmentModule;
 import me.ashif.sampleapp.view.ui.home.HomeFragment;
 
 /**
@@ -15,6 +16,6 @@ public abstract class FragmentBuilder {
     dagger should be listed here
      */
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = HomeFragmentModule.class)
     abstract HomeFragment providesBlankFragment();
 }

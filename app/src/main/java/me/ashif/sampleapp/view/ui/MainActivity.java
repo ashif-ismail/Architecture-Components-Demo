@@ -16,8 +16,8 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 import me.ashif.sampleapp.R;
 import me.ashif.sampleapp.databinding.ActivityMainBinding;
-import me.ashif.sampleapp.view.ui.home.HomeFragment;
 import me.ashif.sampleapp.util.AppUtils;
+import me.ashif.sampleapp.view.ui.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector{
 

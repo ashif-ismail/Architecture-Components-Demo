@@ -3,6 +3,7 @@ package me.ashif.sampleapp.di.modules;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Scope;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -31,7 +32,6 @@ public class HomeFragmentModule {
     }
 
     @Provides
-    @Singleton
     public ContentAdapter providesContentAdapter(){
         return new ContentAdapter();
     }

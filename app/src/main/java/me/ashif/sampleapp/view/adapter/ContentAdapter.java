@@ -56,6 +56,8 @@ public class ContentAdapter extends RecyclerView.Adapter {
                             && Objects.equals(old.getContent().get(newItemPosition).getImg(), old.getContent().get(oldItemPosition).getImg());
                 }
             });
+            this.contentList = contentList;
+            diffResult.dispatchUpdatesTo(this);
         }
     }
 
