@@ -4,7 +4,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import me.ashif.sampleapp.view.adapter.ContentAdapter;
 import me.ashif.sampleapp.view.ui.home.HomeFragment;
 
 /**
@@ -26,8 +25,8 @@ public class HomeFragmentModule {
         return homeFragment;
     }
 
-    @Provides
-    public ContentAdapter providesContentAdapter(){
-        return new ContentAdapter();
-    }
+//    @Provides
+//    public ContentAdapter providesContentAdapter(){
+//        return new ContentAdapter();
+//    }
 }

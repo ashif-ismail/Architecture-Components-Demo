@@ -28,7 +28,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory{
         creators = new ArrayMap<>();
 
         // View models cannot be injected directly because they won't be bound to the owner's view model scope.
-        creators.put(HomeViewModel.class, () -> viewModelSubComponent.homeViewModel());
+        creators.put(HomeViewModel.class, viewModelSubComponent::homeViewModel);
     }
 
     @Override
