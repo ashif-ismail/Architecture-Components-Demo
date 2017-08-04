@@ -60,7 +60,7 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
     private void observeViewModel(HomeViewModel homeViewModel) {
         homeViewModel.getContentListObservable().observe(this, (List<ContentModel> contentModels) -> {
             if (contentModels != null){
-
+                mContentAdapter.setContentList(contentModels);
             }
         });
     }

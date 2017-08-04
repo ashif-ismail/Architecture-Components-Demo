@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 import me.ashif.sampleapp.R;
+import me.ashif.sampleapp.data.model.ContentItems;
 import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.databinding.ContentItemsBinding;
 
@@ -52,8 +53,8 @@ public class ContentAdapter extends RecyclerView.Adapter {
                 public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
                     ContentModel content = contentList.get(newItemPosition);
                     ContentModel old = contentList.get(oldItemPosition);
-                    return content.getContent().get(newItemPosition).getId() == old.getContent().get(oldItemPosition).getId()
-                            && Objects.equals(old.getContent().get(newItemPosition).getImg(), old.getContent().get(oldItemPosition).getImg());
+                    return content.getContent().get(oldItemPosition).getId() == old.getContent().get(newItemPosition).getId()
+                            && Objects.equals(old.getContent().get(oldItemPosition).getImg(), old.getContent().get(newItemPosition).getImg());
                 }
             });
             this.contentList = contentList;
@@ -70,7 +71,7 @@ public class ContentAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+        ((ContentViewHolder) holder).binding.setContent(contentList.get(position).getContent().get(position));
     }
 
     @Override

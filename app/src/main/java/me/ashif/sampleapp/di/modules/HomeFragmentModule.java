@@ -1,14 +1,9 @@
 package me.ashif.sampleapp.di.modules;
 
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.inject.Scope;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.view.adapter.ContentAdapter;
 import me.ashif.sampleapp.view.ui.home.HomeFragment;
 
