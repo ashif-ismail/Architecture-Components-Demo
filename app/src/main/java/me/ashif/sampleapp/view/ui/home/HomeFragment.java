@@ -10,18 +10,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import me.ashif.sampleapp.R;
+import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.databinding.FragmentHomeBinding;
 import me.ashif.sampleapp.di.components.Injectable;
+import me.ashif.sampleapp.view.adapter.ContentAdapter;
 
 public class HomeFragment extends LifecycleFragment implements Injectable {
 
     private FragmentHomeBinding mBinding;
 
     @Inject
-    ViewModelProvider.Factory viewModelFactory;
+    ViewModelProvider.Factory mViewModelFactory;
+
+    @Inject
+    ContentAdapter mContentAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -44,15 +51,17 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        HomeViewModel homeViewModel = ViewModelProviders.of(this,viewModelFactory)
+        HomeViewModel homeViewModel = ViewModelProviders.of(this, mViewModelFactory)
                 .get(HomeViewModel.class);
         observeViewModel(homeViewModel);
 
     }
 
     private void observeViewModel(HomeViewModel homeViewModel) {
-        homeViewModel.getContentListObservable().observe(this, contentModels -> {
+        homeViewModel.getContentListObservable().observe(this, (List<ContentModel> contentModels) -> {
+            if (contentModels != null){
 
+            }
         });
     }
 }

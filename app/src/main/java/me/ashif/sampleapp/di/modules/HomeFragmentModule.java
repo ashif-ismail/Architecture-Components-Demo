@@ -1,9 +1,14 @@
 package me.ashif.sampleapp.di.modules;
 
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import me.ashif.sampleapp.data.model.ContentModel;
+import me.ashif.sampleapp.view.adapter.ContentAdapter;
 import me.ashif.sampleapp.view.ui.home.HomeFragment;
 
 /**
@@ -12,7 +17,7 @@ import me.ashif.sampleapp.view.ui.home.HomeFragment;
  */
 
 @Module
-public class BlankFragmentModule {
+public class HomeFragmentModule {
     /*
     all the dependencies specific to the fragment must
     be listed here,optional you can skip this class creation
@@ -23,5 +28,11 @@ public class BlankFragmentModule {
     @Singleton
     public HomeFragment providesBlankFragment(HomeFragment homeFragment){
         return homeFragment;
+    }
+
+    @Provides
+    @Singleton
+    public ContentAdapter providesContentAdapter(){
+        return new ContentAdapter();
     }
 }

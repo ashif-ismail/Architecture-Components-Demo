@@ -4,6 +4,8 @@ import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
