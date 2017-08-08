@@ -1,5 +1,6 @@
 package me.ashif.sampleapp.api;
 
+import android.annotation.SuppressLint;
 import java.io.IOException;
 import me.ashif.sampleapp.util.AppConstants;
 import okhttp3.HttpUrl;
@@ -15,18 +16,10 @@ import timber.log.Timber;
 
 public class LoggingInterceptor implements Interceptor {
 
+  @SuppressLint("DefaultLocale")
   @Override
   public Response intercept(Chain chain) throws IOException {
-       /* Request originalRequest = chain.request();
-        HttpUrl originalHttpUrl = originalRequest.url();
 
-        HttpUrl url = originalHttpUrl.newBuilder()
-                .addQueryParameter("api_key", AppConstants.API_KEY)
-                .build();
-
-        Request request = originalRequest.newBuilder().url(url).build();
-        return chain.proceed(request);
- */
     Request request = chain.request();
     HttpUrl originalUrl = request.url();
 
@@ -34,6 +27,8 @@ public class LoggingInterceptor implements Interceptor {
     Timber.d(String.format("Sending request %s on %s%n%s",
         request.url(), chain.connection(), request.headers()));
 
+    //if needed to send any queryparam for each requests
+    //for ex : api_key
     HttpUrl urlToHit = originalUrl.newBuilder()
         .addQueryParameter("api_key", AppConstants.API_KEY)
         .build();

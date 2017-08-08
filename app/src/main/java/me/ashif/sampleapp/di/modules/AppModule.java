@@ -82,7 +82,6 @@ public class AppModule {
     @Provides
     ViewModelProvider.Factory provideViewModelFactory(
             VMSubComponent.Builder viewModelSubComponent) {
-
         return new ViewModelFactory(viewModelSubComponent.build());
     }
 
