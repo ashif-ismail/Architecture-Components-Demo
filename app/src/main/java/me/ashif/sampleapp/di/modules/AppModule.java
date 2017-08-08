@@ -3,23 +3,18 @@ package me.ashif.sampleapp.di.modules;
 import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
-
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
-
-import java.util.concurrent.TimeUnit;
-
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
-import me.ashif.sampleapp.data.repo.ContentRepository;
-import me.ashif.sampleapp.di.components.VMSubComponent;
+import java.util.concurrent.TimeUnit;
+import javax.inject.Singleton;
 import me.ashif.sampleapp.api.ApiService;
-import me.ashif.sampleapp.api.RequestInterceptor;
-import me.ashif.sampleapp.view.ui.ViewModelFactory;
+import me.ashif.sampleapp.api.LoggingInterceptor;
+import me.ashif.sampleapp.di.components.VMSubComponent;
 import me.ashif.sampleapp.util.AppConstants;
 import me.ashif.sampleapp.util.AppUtils;
+import me.ashif.sampleapp.view.ui.ViewModelFactory;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -48,7 +43,7 @@ public class AppModule {
     }
     @Provides
     @Singleton
-    public OkHttpClient providesOkHttpClient(RequestInterceptor requestInterceptor,Cache cache) {
+    public OkHttpClient providesOkHttpClient(LoggingInterceptor requestInterceptor, Cache cache) {
         OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
         okHttpClient.connectTimeout(AppConstants.TIMEOUT_IN_SEC, TimeUnit.SECONDS);
         okHttpClient.readTimeout(AppConstants.TIMEOUT_IN_SEC, TimeUnit.SECONDS);
@@ -67,8 +62,8 @@ public class AppModule {
 
     @Provides
     @Singleton
-    public RequestInterceptor providesRequestInterceptor(){
-        return new RequestInterceptor();
+    public LoggingInterceptor providesRequestInterceptor() {
+        return new LoggingInterceptor();
     }
 
     @Singleton
@@ -98,4 +93,5 @@ public class AppModule {
             .downloader(new OkHttp3Downloader(okHttpClient))
             .build();
     }
+
 }

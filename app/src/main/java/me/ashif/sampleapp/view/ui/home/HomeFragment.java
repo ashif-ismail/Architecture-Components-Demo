@@ -11,12 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import me.ashif.sampleapp.R;
 import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.databinding.FragmentHomeBinding;
