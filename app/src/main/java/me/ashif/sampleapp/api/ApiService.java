@@ -1,7 +1,5 @@
 package me.ashif.sampleapp.api;
 
-import java.util.List;
-
 import me.ashif.sampleapp.data.model.ContentModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -14,5 +12,5 @@ import retrofit2.http.GET;
 public interface ApiService {
 
     @GET("SheikhZayed/Fake-Json-Server/db")
-    Call<List<ContentModel>> getContentList();
+    Call<ContentModel> getContentList();
 }

@@ -3,19 +3,22 @@ package me.ashif.sampleapp.di.modules;
 import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
-import com.jakewharton.picasso.OkHttp3Downloader;
+
 import com.squareup.picasso.Picasso;
+
+import java.util.concurrent.TimeUnit;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
-import java.util.concurrent.TimeUnit;
-import javax.inject.Singleton;
-import me.ashif.sampleapp.api.ApiService;
-import me.ashif.sampleapp.api.RequestInterceptor;
 import me.ashif.sampleapp.data.repo.ContentRepository;
 import me.ashif.sampleapp.di.components.VMSubComponent;
+import me.ashif.sampleapp.api.ApiService;
+import me.ashif.sampleapp.api.RequestInterceptor;
+import me.ashif.sampleapp.view.ui.ViewModelFactory;
 import me.ashif.sampleapp.util.AppConstants;
 import me.ashif.sampleapp.util.AppUtils;
-import me.ashif.sampleapp.view.ui.ViewModelFactory;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -28,7 +31,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 @Module(subcomponents = VMSubComponent.class)
 public class AppModule {
-
     /*
     complete app level dependencies should be included here
      */
