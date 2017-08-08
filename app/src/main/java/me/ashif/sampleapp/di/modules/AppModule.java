@@ -91,12 +91,6 @@ public class AppModule {
         return new ViewModelFactory(viewModelSubComponent.build());
     }
 
-    @Singleton
-    @Provides
-    public ContentRepository providesContentRepository(){
-        return new ContentRepository();
-    }
-
     @Provides
     @Singleton
     public Picasso providesPicasso(Application application,OkHttpClient okHttpClient){

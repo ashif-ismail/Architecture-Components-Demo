@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "314810639085",
+    "firebase_url": "https://aac-with-mvvm.firebaseio.com",
+    "project_id": "aac-with-mvvm",
+    "storage_bucket": "aac-with-mvvm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314810639085:android:2bb8d277de4421d5",
+        "android_client_info": {
+          "package_name": "me.ashif.sampleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314810639085-skq8anln2p3n6bomrrc9v0hvqvff11js.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.ashif.sampleapp",
+            "certificate_hash": "15df3aa606b717b826eea74b6620a78772bf152b"
+          }
+        },
+        {
+          "client_id": "314810639085-8kjeralk3qrsmihtmnpf6jbj76oeob2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3Ez0ebJvtx4U3Ng241v-fPc97EsGX5cs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314810639085-8kjeralk3qrsmihtmnpf6jbj76oeob2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 
-
 project.ext {
     dagger_version = "2.11"
     espresso_core = "3.0.0"
@@ -12,6 +11,8 @@ project.ext {
     arch_components = "1.0.0-alpha8"
     picasso = "2.5.2"
     ok_http3_downloader = "1.1.0"
+    timber = "4.5.1"
+    firebase_crash = "10.2.1"
 }
 
 android {
@@ -91,4 +92,12 @@ dependencies {
     //Picasso Dependency
     compile "com.squareup.picasso:picasso:$project.picasso"
     compile "com.jakewharton.picasso:picasso2-okhttp3-downloader:$project.ok_http3_downloader"
+
+    //Timber Dependency
+    compile "com.jakewharton.timber:timber:$project.timber"
+
+    //Firebase CrashReporting
+    compile "com.google.firebase:firebase-crash:$project.firebase_crash"
 }
+
+apply plugin: 'com.google.gms.google-services'

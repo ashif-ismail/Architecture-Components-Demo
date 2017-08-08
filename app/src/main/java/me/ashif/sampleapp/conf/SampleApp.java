@@ -3,6 +3,8 @@ package me.ashif.sampleapp.conf;
 import android.app.Activity;
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -28,6 +30,7 @@ public class SampleApp extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         AppInjector.init(this);
     }
 }
