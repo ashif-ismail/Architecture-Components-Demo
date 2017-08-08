@@ -1,9 +1,5 @@
 package me.ashif.sampleapp.data.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import java.util.List;
 
 /**
@@ -11,22 +7,51 @@ import java.util.List;
  * github.com/SheikhZayed
  */
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "content"
-})
+
 public class ContentModel {
 
-    @JsonProperty("content")
-    private List<ContentItems> content = null;
+    private List<Content> content;
 
-    @JsonProperty("content")
-    public List<ContentItems> getContent() {
+    public List<Content> getContent() {
         return content;
     }
 
-    @JsonProperty("content")
-    public void setContent(List<ContentItems> content) {
+    public void setContent(List<Content> content) {
         this.content = content;
+    }
+
+    public static class Content {
+
+        /**
+         * id : 1 title : It Must be in Beard! img : https://www.wired.com/wp-content/uploads/blogs/wiredenterprise/wp-content/uploads//2012/06/beard-programmers-final-two.png
+         */
+
+        private int id;
+        private String title;
+        private String img;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getImg() {
+            return img;
+        }
+
+        public void setImg(String img) {
+            this.img = img;
+        }
     }
 }

@@ -18,7 +18,7 @@ import me.ashif.sampleapp.view.ui.ViewModelFactory;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Ashif on 3/8/17,August,2017
@@ -36,7 +36,7 @@ public class AppModule {
   public ApiService providesApiService(OkHttpClient okHttpClient) {
     return new Retrofit.Builder()
         .baseUrl(AppConstants.BASE_URL)
-        .addConverterFactory(JacksonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
         .create(ApiService.class);
