@@ -34,9 +34,8 @@ public class ContentAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((ContentViewHolder) holder).binding.setContent(contentList.get(position).getContent().get(position));
-    }
 
+    }
     @Override
     public int getItemCount() {
         return contentList.size();

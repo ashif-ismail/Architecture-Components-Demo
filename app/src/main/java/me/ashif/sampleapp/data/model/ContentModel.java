@@ -23,7 +23,9 @@ public class ContentModel {
     public static class Content {
 
         /**
-         * id : 1 title : It Must be in Beard! img : https://www.wired.com/wp-content/uploads/blogs/wiredenterprise/wp-content/uploads//2012/06/beard-programmers-final-two.png
+         * id : 1
+         * title : It Must be in Beard!
+         * img : https://www.wired.com/wp-content/uploads/blogs/wiredenterprise/wp-content/uploads//2012/06/beard-programmers-final-two.png
          */
 
         private int id;
