@@ -1,7 +1,9 @@
 package me.ashif.sampleapp.api;
 
 import android.annotation.SuppressLint;
+
 import java.io.IOException;
+
 import me.ashif.sampleapp.util.AppConstants;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -27,7 +29,7 @@ public class LoggingInterceptor implements Interceptor {
     Timber.d(String.format("Sending request %s on %s%n%s",
         request.url(), chain.connection(), request.headers()));
 
-    //if needed to send any queryparam for each requests
+      //if needed to send any query param common for each requests
     //for ex : api_key
     HttpUrl urlToHit = originalUrl.newBuilder()
         .addQueryParameter("api_key", AppConstants.API_KEY)
