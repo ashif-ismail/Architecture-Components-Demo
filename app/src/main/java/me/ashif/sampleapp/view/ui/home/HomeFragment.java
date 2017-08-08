@@ -19,6 +19,7 @@ import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.databinding.FragmentHomeBinding;
 import me.ashif.sampleapp.di.components.Injectable;
 import me.ashif.sampleapp.view.adapter.ContentAdapter;
+import timber.log.Timber;
 
 public class HomeFragment extends LifecycleFragment implements Injectable {
 
@@ -59,8 +60,8 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Log.d(TAG, "onActivityCreated: inside onActivty created");
-
+//        Log.d(TAG, "onActivityCreated: inside onActivty created");
+        Timber.d("inside activity created");
         HomeViewModel homeViewModel = ViewModelProviders.of(this, mViewModelFactory)
                 .get(HomeViewModel.class);
         observeViewModel(homeViewModel);

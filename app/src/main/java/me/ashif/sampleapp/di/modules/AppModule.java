@@ -31,66 +31,66 @@ public class AppModule {
     complete app level dependencies should be included here
      */
 
-    @Singleton
-    @Provides
-    public ApiService providesApiService(OkHttpClient okHttpClient) {
-        return new Retrofit.Builder()
-                .baseUrl(AppConstants.BASE_URL)
-                .addConverterFactory(JacksonConverterFactory.create())
-                .client(okHttpClient)
-                .build()
-                .create(ApiService.class);
-    }
-    @Provides
-    @Singleton
-    public OkHttpClient providesOkHttpClient(LoggingInterceptor requestInterceptor, Cache cache) {
-        OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
-        okHttpClient.connectTimeout(AppConstants.TIMEOUT_IN_SEC, TimeUnit.SECONDS);
-        okHttpClient.readTimeout(AppConstants.TIMEOUT_IN_SEC, TimeUnit.SECONDS);
-        okHttpClient.addInterceptor(requestInterceptor);
-        okHttpClient.cache(cache);
-        return okHttpClient.build();
-    }
+  @Singleton
+  @Provides
+  public ApiService providesApiService(OkHttpClient okHttpClient) {
+    return new Retrofit.Builder()
+        .baseUrl(AppConstants.BASE_URL)
+        .addConverterFactory(JacksonConverterFactory.create())
+        .client(okHttpClient)
+        .build()
+        .create(ApiService.class);
+  }
 
-    @Singleton
-    @Provides
-    public Cache providesHttpCache(Application application){
-        int cacheSize = 10 * 1024 * 1024;
-        Cache cache = new Cache(application.getCacheDir(), cacheSize);
-        return cache;
-    }
+  @Provides
+  @Singleton
+  public OkHttpClient providesOkHttpClient(LoggingInterceptor requestInterceptor, Cache cache) {
+    OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder();
+    okHttpClient.connectTimeout(AppConstants.TIMEOUT_IN_SEC, TimeUnit.SECONDS);
+    okHttpClient.readTimeout(AppConstants.TIMEOUT_IN_SEC, TimeUnit.SECONDS);
+    okHttpClient.addInterceptor(requestInterceptor);
+    okHttpClient.cache(cache);
+    return okHttpClient.build();
+  }
 
-    @Provides
-    @Singleton
-    public LoggingInterceptor providesRequestInterceptor() {
-        return new LoggingInterceptor();
-    }
+  @Singleton
+  @Provides
+  public Cache providesHttpCache(Application application) {
+    int cacheSize = 10 * 1024 * 1024;
+    Cache cache = new Cache(application.getCacheDir(), cacheSize);
+    return cache;
+  }
 
-    @Singleton
-    @Provides
-    public AppUtils providesAppUtils() {
-        return new AppUtils();
-    }
+  @Provides
+  @Singleton
+  public LoggingInterceptor providesRequestInterceptor() {
+    return new LoggingInterceptor();
+  }
 
-    @Provides
-    @Singleton
-    Context providesContext(Application application) {
-        return application;
-    }
+  @Singleton
+  @Provides
+  public AppUtils providesAppUtils() {
+    return new AppUtils();
+  }
 
-    @Singleton
-    @Provides
-    ViewModelProvider.Factory provideViewModelFactory(
-            VMSubComponent.Builder viewModelSubComponent) {
-        return new ViewModelFactory(viewModelSubComponent.build());
-    }
+  @Provides
+  @Singleton
+  Context providesContext(Application application) {
+    return application;
+  }
 
-    @Provides
-    @Singleton
-    public Picasso providesPicasso(Application application,OkHttpClient okHttpClient){
-        return new Picasso.Builder(application)
-            .downloader(new OkHttp3Downloader(okHttpClient))
-            .build();
-    }
+  @Singleton
+  @Provides
+  ViewModelProvider.Factory provideViewModelFactory(
+      VMSubComponent.Builder viewModelSubComponent) {
+    return new ViewModelFactory(viewModelSubComponent.build());
+  }
 
+  @Provides
+  @Singleton
+  public Picasso providesPicasso(Application application, OkHttpClient okHttpClient) {
+    return new Picasso.Builder(application)
+        .downloader(new OkHttp3Downloader(okHttpClient))
+        .build();
+  }
 }
