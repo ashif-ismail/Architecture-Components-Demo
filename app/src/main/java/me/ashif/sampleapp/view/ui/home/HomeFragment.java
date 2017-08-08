@@ -23,62 +23,60 @@ import timber.log.Timber;
 
 public class HomeFragment extends LifecycleFragment implements Injectable {
 
-    String TAG = "logger";
-    @Inject
-    ViewModelProvider.Factory mViewModelFactory;
-    private FragmentHomeBinding mBinding;
-    private ContentAdapter mContentAdapter;
-
-//    @Inject
-//    ContentAdapter mContentAdapter;
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
-    }
+  String TAG = "logger";
+  @Inject
+  ViewModelProvider.Factory mViewModelFactory;
+  private FragmentHomeBinding mBinding;
+  private ContentAdapter mContentAdapter;
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+  public HomeFragment() {
+    // Required empty public constructor
+  }
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
-        initViews();
-        return mBinding.getRoot();
-    }
+  public static HomeFragment newInstance() {
+    return new HomeFragment();
+  }
 
-    private void initViews() {
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        mBinding.listContent.setLayoutManager(llm);
-    }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle savedInstanceState) {
+
+    mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+    initViews();
+    return mBinding.getRoot();
+  }
+
+  private void initViews() {
+    LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+    llm.setOrientation(LinearLayoutManager.VERTICAL);
+    mBinding.listContent.setLayoutManager(llm);
+  }
+
+  @Override
+  public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
 
 //        Log.d(TAG, "onActivityCreated: inside onActivty created");
-        Timber.d("inside activity created");
-        HomeViewModel homeViewModel = ViewModelProviders.of(this, mViewModelFactory)
-                .get(HomeViewModel.class);
-        observeViewModel(homeViewModel);
+    Timber.d("inside activity created");
+    HomeViewModel homeViewModel = ViewModelProviders.of(this, mViewModelFactory)
+        .get(HomeViewModel.class);
+    observeViewModel(homeViewModel);
 
-    }
+  }
 
-    private void observeViewModel(HomeViewModel homeViewModel) {
-        homeViewModel.getContentListObservable().observe(this, (ContentModel contentModels) -> {
-            if (contentModels != null){
-                Log.d(TAG, "onActivityCreated: inside observe");
-                Log.d(TAG, "onActivityCreated:" + contentModels.getContent().get(0).getTitle());
+  private void observeViewModel(HomeViewModel homeViewModel) {
+    homeViewModel.getContentListObservable().observe(this, (ContentModel contentModels) -> {
+      if (contentModels != null) {
+        Log.d(TAG, "onActivityCreated: inside observe");
+        Log.d(TAG, "onActivityCreated:" + contentModels.getContent().get(0).getTitle());
 //                mContentAdapter.setContentList(contentModels);
-                List<ContentModel> models = new ArrayList<>();
-                models.add(contentModels);
-                ContentAdapter contentAdapter = new ContentAdapter(models);
-                mBinding.listContent.setAdapter(contentAdapter);
-            }
-        });
-    }
+        List<ContentModel> models = new ArrayList<>();
+        models.add(contentModels);
+        ContentAdapter contentAdapter = new ContentAdapter(models);
+        mBinding.listContent.setAdapter(contentAdapter);
+      }
+    });
+  }
 }
