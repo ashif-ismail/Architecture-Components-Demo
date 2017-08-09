@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.google.firebase.crash.FirebaseCrash;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -66,6 +67,9 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
     observeViewModel(homeViewModel);
     //faking a crash to firebase
     FirebaseCrash.report(new NullPointerException());
+    FirebaseCrash.report(new ArithmeticException());
+    FirebaseCrash.report(new ArrayIndexOutOfBoundsException());
+    FirebaseCrash.report(new FileNotFoundException("Boom !!"));
 
   }
 
