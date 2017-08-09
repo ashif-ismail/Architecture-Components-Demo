@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.google.firebase.crash.FirebaseCrash;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -63,6 +64,8 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
     HomeViewModel homeViewModel = ViewModelProviders.of(this, mViewModelFactory)
         .get(HomeViewModel.class);
     observeViewModel(homeViewModel);
+    //faking a crash to firebase
+    FirebaseCrash.report(new NullPointerException());
 
   }
 
