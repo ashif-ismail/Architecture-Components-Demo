@@ -22,7 +22,7 @@ public class ContentRepository {
 
 
     @Inject
-    public ContentRepository(ApiService mApiService, DialogUtils dialogUtils) {
+    public ContentRepository(ApiService mApiService) {
         this.mApiService = mApiService;
     }
 
