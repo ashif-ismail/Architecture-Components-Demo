@@ -13,8 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.google.firebase.crash.FirebaseCrash;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.inject.Inject;
 import me.ashif.sampleapp.R;
 import me.ashif.sampleapp.data.model.ContentModel;
@@ -76,12 +74,8 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
   private void observeViewModel(HomeViewModel homeViewModel) {
     homeViewModel.getContentListObservable().observe(this, (ContentModel contentModels) -> {
       if (contentModels != null) {
-        Log.d(TAG, "onActivityCreated: inside observe");
-        Log.d(TAG, "onActivityCreated:" + contentModels.getContent().get(0).getTitle());
-//                mContentAdapter.setContentList(contentModels);
-        List<ContentModel> models = new ArrayList<>();
-        models.add(contentModels);
-        ContentAdapter contentAdapter = new ContentAdapter(models);
+        Log.d(TAG, "observeViewModel: " + contentModels.getContent());
+        ContentAdapter contentAdapter = new ContentAdapter(contentModels.getContent());
         mBinding.listContent.setAdapter(contentAdapter);
       }
     });
