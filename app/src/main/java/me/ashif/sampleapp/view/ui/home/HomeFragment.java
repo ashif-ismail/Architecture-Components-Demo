@@ -7,7 +7,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
   @Inject
   ViewModelProvider.Factory mViewModelFactory;
   private FragmentHomeBinding mBinding;
-  private ContentAdapter mContentAdapter;
 
 
   public HomeFragment() {
@@ -58,7 +56,6 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
 
-//        Log.d(TAG, "onActivityCreated: inside onActivty created");
     Timber.d("inside activity created");
     HomeViewModel homeViewModel = ViewModelProviders.of(this, mViewModelFactory)
         .get(HomeViewModel.class);
@@ -74,7 +71,6 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
   private void observeViewModel(HomeViewModel homeViewModel) {
     homeViewModel.getContentListObservable().observe(this, (ContentModel contentModels) -> {
       if (contentModels != null) {
-        Log.d(TAG, "observeViewModel: " + contentModels.getContent());
         ContentAdapter contentAdapter = new ContentAdapter(contentModels.getContent());
         mBinding.listContent.setAdapter(contentAdapter);
       }

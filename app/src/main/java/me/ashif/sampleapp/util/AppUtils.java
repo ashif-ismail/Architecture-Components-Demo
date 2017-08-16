@@ -6,7 +6,5 @@ package me.ashif.sampleapp.util;
  */
 
 public class AppUtils {
-    public String ShowMessage(){
-        return "Hi,Howdy?Isn't Cool?";
-    }
+
 }

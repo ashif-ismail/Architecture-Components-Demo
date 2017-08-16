@@ -17,5 +17,5 @@ public abstract class FragmentBuilder {
      */
 
     @ContributesAndroidInjector(modules = HomeFragmentModule.class)
-    abstract HomeFragment providesBlankFragment();
+    abstract HomeFragment providesHomeFragment();
 }
