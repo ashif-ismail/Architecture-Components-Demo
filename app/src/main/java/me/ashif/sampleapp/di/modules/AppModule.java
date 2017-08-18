@@ -9,8 +9,8 @@ import dagger.Module;
 import dagger.Provides;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
-import me.ashif.sampleapp.api.ApiService;
 import me.ashif.sampleapp.api.LoggingInterceptor;
+import me.ashif.sampleapp.api.RESTService;
 import me.ashif.sampleapp.di.components.VMSubComponent;
 import me.ashif.sampleapp.util.AppConstants;
 import me.ashif.sampleapp.util.AppUtils;
@@ -34,13 +34,13 @@ public class AppModule {
 
   @Singleton
   @Provides
-  public ApiService providesApiService(OkHttpClient okHttpClient) {
+  public RESTService providesApiService(OkHttpClient okHttpClient) {
     return new Retrofit.Builder()
         .baseUrl(AppConstants.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
-        .create(ApiService.class);
+        .create(RESTService.class);
   }
 
   @Provides

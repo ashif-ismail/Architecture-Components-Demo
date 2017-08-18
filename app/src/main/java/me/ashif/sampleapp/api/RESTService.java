@@ -9,7 +9,7 @@ import retrofit2.http.GET;
  * github.com/SheikhZayed
  */
 
-public interface ApiService {
+public interface RESTService {
 
     @GET("SheikhZayed/Fake-Json-Server/db")
     Call<ContentModel> getContentList();
