@@ -18,30 +18,30 @@ import retrofit2.Response;
 @Singleton
 public class ContentRepository {
 
-    private ApiService mApiService;
+  private ApiService mApiService;
 
+  @Inject
+  public ContentRepository(ApiService mApiService) {
+    this.mApiService = mApiService;
+  }
 
-    @Inject
-    public ContentRepository(ApiService mApiService) {
-        this.mApiService = mApiService;
-    }
+  public LiveData<ContentModel> getContent() {
+    final MutableLiveData<ContentModel> contentLiveData = new MutableLiveData<>();
 
-    public LiveData<ContentModel> getContent() {
-        final MutableLiveData<ContentModel> contentLiveData = new MutableLiveData<>();
-        mApiService.getContentList().enqueue(new Callback<ContentModel>() {
-            @Override
-            public void onResponse(Call<ContentModel> call, Response<ContentModel> response) {
-                if (response.isSuccessful()) {
-                    contentLiveData.setValue(response.body());
-                }
-            }
+    mApiService.getContentList().enqueue(new Callback<ContentModel>() {
+      @Override
+      public void onResponse(Call<ContentModel> call, Response<ContentModel> response) {
+        if (response.isSuccessful()) {
+          contentLiveData.setValue(response.body());
+        }
+      }
 
-            @Override
-            public void onFailure(Call<ContentModel> call, Throwable t) {
-                contentLiveData.setValue(null);
-                // TODO: 4/8/17 should implement better error handling strategy
-            }
-        });
-        return contentLiveData;
-    }
+      @Override
+      public void onFailure(Call<ContentModel> call, Throwable t) {
+        contentLiveData.setValue(null);
+        // TODO: 4/8/17 should implement better error handling strategy
+      }
+    });
+    return contentLiveData;
+  }
 }

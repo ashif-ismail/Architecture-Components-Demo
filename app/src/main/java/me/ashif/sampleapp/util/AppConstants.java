@@ -8,6 +8,6 @@ package me.ashif.sampleapp.util;
 public class AppConstants {
 
   public static final String BASE_URL = "http://my-json-server.typicode.com/";
-    public static final int TIMEOUT_IN_SEC = 15;
-    public static final String API_KEY = "";
+  public static final int TIMEOUT_IN_SEC = 15;
+  public static final String API_KEY = "";
 }

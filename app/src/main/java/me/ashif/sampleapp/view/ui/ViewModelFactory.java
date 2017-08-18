@@ -3,13 +3,10 @@ package me.ashif.sampleapp.view.ui;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.v4.util.ArrayMap;
-
 import java.util.Map;
 import java.util.concurrent.Callable;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
 import me.ashif.sampleapp.di.components.VMSubComponent;
 import me.ashif.sampleapp.view.ui.home.HomeViewModel;
 
@@ -28,6 +25,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory{
         creators = new ArrayMap<>();
 
         // View models cannot be injected directly because they won't be bound to the owner's view model scope.
+      // add all ur viewmodels here
         creators.put(HomeViewModel.class, viewModelSubComponent::homeViewModel);
     }
 

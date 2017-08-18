@@ -17,6 +17,7 @@ import me.ashif.sampleapp.R;
 import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.databinding.FragmentHomeBinding;
 import me.ashif.sampleapp.di.components.Injectable;
+import me.ashif.sampleapp.util.DialogUtils;
 import me.ashif.sampleapp.view.adapter.ContentAdapter;
 import timber.log.Timber;
 
@@ -25,6 +26,8 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
   String TAG = "logger";
   @Inject
   ViewModelProvider.Factory mViewModelFactory;
+  @Inject
+  DialogUtils mDialogUtils;
   private FragmentHomeBinding mBinding;
 
 
@@ -35,7 +38,6 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
   public static HomeFragment newInstance() {
     return new HomeFragment();
   }
-
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,10 +71,12 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
   }
 
   private void observeViewModel(HomeViewModel homeViewModel) {
+//    mDialogUtils.showProgress(getContext(),getResources().getString(R.string.loading_message));
     homeViewModel.getContentListObservable().observe(this, (ContentModel contentModels) -> {
       if (contentModels != null) {
         ContentAdapter contentAdapter = new ContentAdapter(contentModels.getContent());
         mBinding.listContent.setAdapter(contentAdapter);
+        mDialogUtils.hideProgress();
       }
     });
   }

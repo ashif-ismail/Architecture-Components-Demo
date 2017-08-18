@@ -3,9 +3,7 @@ package me.ashif.sampleapp.view.ui.home;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-
 import javax.inject.Inject;
-
 import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.data.repo.ContentRepository;
 

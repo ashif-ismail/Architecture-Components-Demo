@@ -14,6 +14,7 @@ import me.ashif.sampleapp.api.LoggingInterceptor;
 import me.ashif.sampleapp.di.components.VMSubComponent;
 import me.ashif.sampleapp.util.AppConstants;
 import me.ashif.sampleapp.util.AppUtils;
+import me.ashif.sampleapp.util.DialogUtils;
 import me.ashif.sampleapp.view.ui.ViewModelFactory;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -93,4 +94,11 @@ public class AppModule {
         .downloader(new OkHttp3Downloader(okHttpClient))
         .build();
   }
+
+  @Provides
+  @Singleton
+  public DialogUtils provideDialogUtils() {
+    return new DialogUtils();
+  }
+
 }
