@@ -2,6 +2,7 @@ package me.ashif.sampleapp.data.repo;
 
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
+import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import me.ashif.sampleapp.api.RESTService;
@@ -33,29 +34,8 @@ public class ContentRepository {
     this.mAppExecutors = mAppExecutors;
   }
 
-//  public LiveData<ContentModel> getContentList() {
-//    final MutableLiveData<ContentModel> contentLiveData = new MutableLiveData<>();
-//
-//    mApiService.getContentList().enqueue(new Callback<ContentModel>() {
-//      @Override
-//      public void onResponse(Call<ContentModel> call, Response<ContentModel> response) {
-//        if (response.isSuccessful()) {
-//          contentLiveData.setValue(response.body());
-//        }
-//      }
-//
-//      @Override
-//      public void onFailure(Call<ContentModel> call, Throwable t) {
-//        contentLiveData.setValue(null);
-//        // TODO: 4/8/17 should implement better error handling strategy
-//      }
-//    });
-//
-//    return contentLiveData;
-//  }
-
-  public LiveData<Resource<Content>> getContent() {
-    return new NetworkBoundResource<Content, ContentModel>(mAppExecutors) {
+  public LiveData<Resource<List<Content>>> getContentList() {
+    return new NetworkBoundResource<List<Content>, ContentModel>(mAppExecutors) {
       @Override
       protected void saveCallResult(@NonNull ContentModel item) {
         mContentDao.saveContent(item.getContent());
@@ -63,7 +43,7 @@ public class ContentRepository {
 
       @NonNull
       @Override
-      protected LiveData<Content> loadFromDb() {
+      protected LiveData<List<Content>> loadFromDb() {
         return mContentDao.loadContents();
       }
 

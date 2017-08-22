@@ -16,7 +16,7 @@ import me.ashif.sampleapp.data.model.ContentModel.Content;
 public interface ContentDao {
 
   @Query("SELECT * from content")
-  LiveData<Content> loadContents();
+  LiveData<List<Content>> loadContents();
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   void saveContent(List<Content> contentList);

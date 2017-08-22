@@ -101,7 +101,7 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
   protected abstract Call<RequestType> createCall();
 
   @MainThread
-  protected void onFetchFailed() {
+  private void onFetchFailed() {
   }
 
   public final LiveData<Resource<ResultType>> getAsLiveData() {

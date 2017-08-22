@@ -3,6 +3,7 @@ package me.ashif.sampleapp.view.ui.home;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import java.util.List;
 import javax.inject.Inject;
 import me.ashif.sampleapp.conf.Resource;
 import me.ashif.sampleapp.data.model.ContentModel.Content;
@@ -15,15 +16,15 @@ import me.ashif.sampleapp.data.repo.ContentRepository;
 
 public class HomeViewModel extends AndroidViewModel {
 
-    private final LiveData<Resource<Content>> contentListObservable;
+    private final LiveData<Resource<List<Content>>> contentListObservable;
 
     @Inject
     public HomeViewModel(Application application, ContentRepository contentRepository) {
         super(application);
-        this.contentListObservable = contentRepository.getContent();
+        this.contentListObservable = contentRepository.getContentList();
     }
 
-    public LiveData<Resource<Content>> getContentListObservable() {
+    public LiveData<Resource<List<Content>>> getContentListObservable() {
         return contentListObservable;
     }
 }

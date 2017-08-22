@@ -14,7 +14,6 @@ import com.google.firebase.crash.FirebaseCrash;
 import java.io.FileNotFoundException;
 import javax.inject.Inject;
 import me.ashif.sampleapp.R;
-import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.databinding.FragmentHomeBinding;
 import me.ashif.sampleapp.di.components.Injectable;
 import me.ashif.sampleapp.util.DialogUtils;
@@ -71,9 +70,9 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
 
   private void observeViewModel(HomeViewModel homeViewModel) {
     mDialogUtils.showProgress(getResources().getString(R.string.loading_message));
-    homeViewModel.getContentListObservable().observe(this, (ContentModel contentModels) -> {
-      if (contentModels != null) {
-        ContentAdapter contentAdapter = new ContentAdapter(contentModels.getContent());
+    homeViewModel.getContentListObservable().observe(this, content -> {
+      if (content != null) {
+        ContentAdapter contentAdapter = new ContentAdapter(content.data);
         mBinding.listContent.setAdapter(contentAdapter);
         mDialogUtils.hideProgress();
       }
