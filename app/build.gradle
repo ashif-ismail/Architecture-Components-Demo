@@ -98,7 +98,6 @@ dependencies {
 
     //Firebase CrashReporting
     compile "com.google.firebase:firebase-crash:$project.firebase_crash"
-
 }
 
 apply plugin: 'com.google.gms.google-services'

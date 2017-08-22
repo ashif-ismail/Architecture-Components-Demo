@@ -13,15 +13,12 @@ import dagger.android.support.HasSupportFragmentInjector;
 import javax.inject.Inject;
 import me.ashif.sampleapp.R;
 import me.ashif.sampleapp.databinding.ActivityMainBinding;
-import me.ashif.sampleapp.util.AppUtils;
 import me.ashif.sampleapp.view.ui.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector {
 
   @Inject
   DispatchingAndroidInjector<Fragment> mDispatchingAndroidInjector;
-  @Inject
-  AppUtils mAppUtils;
   private ActivityMainBinding mBinding;
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
       = item -> {
@@ -61,7 +58,9 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
   }
 
   private void setViewListeners() {
-    mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    mBinding
+        .navigation
+        .setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
   }
 
   @Override

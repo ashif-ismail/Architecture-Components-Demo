@@ -2,6 +2,7 @@ package me.ashif.sampleapp.di.modules;
 
 import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
@@ -11,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
 import me.ashif.sampleapp.api.LoggingInterceptor;
 import me.ashif.sampleapp.api.RESTService;
+import me.ashif.sampleapp.conf.AppDataBase;
+import me.ashif.sampleapp.data.dao.ContentDao;
 import me.ashif.sampleapp.di.components.VMSubComponent;
 import me.ashif.sampleapp.util.AppConstants;
 import me.ashif.sampleapp.util.AppUtils;
@@ -26,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * github.com/SheikhZayed
  */
 
-@Module(subcomponents = VMSubComponent.class)
+@Module(subcomponents = VMSubComponent.class, includes = ContextModule.class)
 public class AppModule {
     /*
     complete app level dependencies should be included here
@@ -101,4 +104,16 @@ public class AppModule {
     return new DialogUtils();
   }
 
+
+  @Provides
+  @Singleton
+  AppDataBase provideAppDataBase(Application application) {
+    return Room.databaseBuilder(application, AppDataBase.class, "SampleApp.db").build();
+  }
+
+  @Provides
+  @Singleton
+  ContentDao provideContentDao(AppDataBase appDataBase) {
+    return appDataBase.contentDao();
+  }
 }

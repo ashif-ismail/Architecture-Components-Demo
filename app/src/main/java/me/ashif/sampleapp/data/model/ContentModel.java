@@ -1,5 +1,6 @@
 package me.ashif.sampleapp.data.model;
 
+import android.arch.persistence.room.Entity;
 import java.util.List;
 
 /**
@@ -20,40 +21,41 @@ public class ContentModel {
         this.content = content;
     }
 
-    public static class Content {
+  @Entity(tableName = "content")
+  public static class Content {
 
-        /**
-         * id : 1
-         * title : It Must be in Beard!
-         * img : https://www.wired.com/wp-content/uploads/blogs/wiredenterprise/wp-content/uploads//2012/06/beard-programmers-final-two.png
-         */
+    /**
+     * id : 1
+     * title : It Must be in Beard!
+     * img : https://www.wired.com/wp-content/uploads/blogs/wiredenterprise/wp-content/uploads//2012/06/beard-programmers-final-two.png
+     */
 
-        private int id;
-        private String title;
-        private String img;
+    private int id;
+    private String title;
+    private String img;
 
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getImg() {
-            return img;
-        }
-
-        public void setImg(String img) {
-            this.img = img;
-        }
+    public int getId() {
+      return id;
     }
+
+    public void setId(int id) {
+      this.id = id;
+    }
+
+    public String getTitle() {
+      return title;
+    }
+
+    public void setTitle(String title) {
+      this.title = title;
+    }
+
+    public String getImg() {
+      return img;
+    }
+
+    public void setImg(String img) {
+      this.img = img;
+    }
+  }
 }

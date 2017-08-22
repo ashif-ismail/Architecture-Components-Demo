@@ -67,11 +67,10 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
     FirebaseCrash.report(new ArithmeticException());
     FirebaseCrash.report(new ArrayIndexOutOfBoundsException());
     FirebaseCrash.report(new FileNotFoundException("Boom !!"));
-
   }
 
   private void observeViewModel(HomeViewModel homeViewModel) {
-//    mDialogUtils.showProgress(getContext(),getResources().getString(R.string.loading_message));
+    mDialogUtils.showProgress(getResources().getString(R.string.loading_message));
     homeViewModel.getContentListObservable().observe(this, (ContentModel contentModels) -> {
       if (contentModels != null) {
         ContentAdapter contentAdapter = new ContentAdapter(contentModels.getContent());
