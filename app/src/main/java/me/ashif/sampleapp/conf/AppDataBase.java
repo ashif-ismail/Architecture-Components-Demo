@@ -10,7 +10,7 @@ import me.ashif.sampleapp.data.model.ContentModel;
  * github.com/SheikhZayed
  */
 
-@Database(entities = {ContentModel.class}, version = 1)
+@Database(entities = {ContentModel.class}, version = 1, exportSchema = false)
 public abstract class AppDataBase extends RoomDatabase {
 
   public abstract ContentDao contentDao();

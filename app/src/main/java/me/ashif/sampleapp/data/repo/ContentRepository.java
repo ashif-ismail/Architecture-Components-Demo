@@ -54,7 +54,7 @@ public class ContentRepository {
 //    return contentLiveData;
 //  }
 
-  public LiveData<Resource<Content>> getContentList() {
+  public LiveData<Resource<Content>> getContent() {
     return new NetworkBoundResource<Content, ContentModel>(mAppExecutors) {
       @Override
       protected void saveCallResult(@NonNull ContentModel item) {

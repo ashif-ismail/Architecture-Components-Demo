@@ -20,9 +20,11 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
   @Inject
   DispatchingAndroidInjector<Fragment> mDispatchingAndroidInjector;
   private ActivityMainBinding mBinding;
-  private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+  private BottomNavigationView.OnNavigationItemSelectedListener
+      mOnNavigationItemSelectedListener
       = item -> {
     Fragment selectedFragment = null;
+
     switch (item.getItemId()) {
       case R.id.navigation_home:
         selectedFragment = HomeFragment.newInstance();
