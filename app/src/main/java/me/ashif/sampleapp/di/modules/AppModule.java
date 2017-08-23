@@ -14,6 +14,7 @@ import me.ashif.sampleapp.api.LoggingInterceptor;
 import me.ashif.sampleapp.api.RESTService;
 import me.ashif.sampleapp.conf.AppDataBase;
 import me.ashif.sampleapp.data.dao.ContentDao;
+import me.ashif.sampleapp.data.model.ContentModel.Content;
 import me.ashif.sampleapp.di.components.VMSubComponent;
 import me.ashif.sampleapp.util.AppConstants;
 import me.ashif.sampleapp.util.AppUtils;
@@ -29,11 +30,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * github.com/SheikhZayed
  */
 
-@Module(subcomponents = VMSubComponent.class, includes = ContextModule.class)
+@Module(subcomponents = VMSubComponent.class)
 public class AppModule {
     /*
     complete app level dependencies should be included here
      */
+
 
   @Singleton
   @Provides
@@ -116,4 +118,5 @@ public class AppModule {
   ContentDao provideContentDao(AppDataBase appDataBase) {
     return appDataBase.contentDao();
   }
+
 }

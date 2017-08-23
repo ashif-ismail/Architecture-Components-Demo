@@ -1,6 +1,7 @@
 package me.ashif.sampleapp.data.model;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import java.util.List;
 
 /**
@@ -30,6 +31,7 @@ public class ContentModel {
      * img : https://www.wired.com/wp-content/uploads/blogs/wiredenterprise/wp-content/uploads//2012/06/beard-programmers-final-two.png
      */
 
+    @PrimaryKey
     private int id;
     private String title;
     private String img;
