@@ -16,7 +16,7 @@ import me.ashif.sampleapp.data.repo.ContentRepository;
 
 public class HomeViewModel extends AndroidViewModel {
 
-    private final LiveData<Resource<List<Content>>> contentListObservable;
+    private final LiveData<List<Content>> contentListObservable;
 
     @Inject
     public HomeViewModel(Application application, ContentRepository contentRepository) {
@@ -24,7 +24,7 @@ public class HomeViewModel extends AndroidViewModel {
         this.contentListObservable = contentRepository.getContentList();
     }
 
-    public LiveData<Resource<List<Content>>> getContentListObservable() {
+    public LiveData<List<Content>> getContentListObservable() {
         return contentListObservable;
     }
 }

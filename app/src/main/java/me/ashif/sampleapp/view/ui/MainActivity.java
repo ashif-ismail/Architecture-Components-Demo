@@ -20,34 +20,12 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
   @Inject
   DispatchingAndroidInjector<Fragment> mDispatchingAndroidInjector;
   private ActivityMainBinding mBinding;
-  private BottomNavigationView.OnNavigationItemSelectedListener
-      mOnNavigationItemSelectedListener
-      = item -> {
-    Fragment selectedFragment = null;
-
-    switch (item.getItemId()) {
-      case R.id.navigation_home:
-        selectedFragment = HomeFragment.newInstance();
-        break;
-      case R.id.navigation_dashboard:
-        selectedFragment = HomeFragment.newInstance();
-        break;
-      case R.id.navigation_notifications:
-        selectedFragment = HomeFragment.newInstance();
-        break;
-    }
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    transaction.replace(R.id.parent, selectedFragment);
-    transaction.commit();
-    return true;
-  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-    setViewListeners();
     showHomeAsDefault();
 
     FirebaseCrash.log("It Works !");
@@ -57,12 +35,6 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     transaction.replace(R.id.parent, HomeFragment.newInstance());
     transaction.commit();
-  }
-
-  private void setViewListeners() {
-    mBinding
-        .navigation
-        .setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
   }
 
   @Override

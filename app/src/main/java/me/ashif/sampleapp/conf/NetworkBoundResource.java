@@ -40,14 +40,13 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
     result.addSource(dbSource, newData -> result.setValue(Resource.loading(newData)));
     createCall().enqueue(new Callback<RequestType>() {
       @Override
-      public void onResponse(@NonNull Call<RequestType> call,
-          @NonNull Response<RequestType> response) {
+      public void onResponse(Call<RequestType> call,Response<RequestType> response) {
         result.removeSource(dbSource);
         saveResult(response.body());
       }
 
       @Override
-      public void onFailure(@NonNull Call<RequestType> call, @NonNull Throwable t) {
+      public void onFailure(Call<RequestType> call,Throwable t) {
         onFetchFailed();
         result.removeSource(dbSource);
         result.addSource(dbSource,
@@ -85,10 +84,10 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
   }
 
   @WorkerThread
-  protected abstract void saveCallResult(@NonNull RequestType item);
+  protected abstract void saveCallResult(RequestType item);
 
   @MainThread
-  protected boolean shouldFetch(@Nullable ResultType data) {
+  protected boolean shouldFetch(ResultType data) {
     return true;
   }
 

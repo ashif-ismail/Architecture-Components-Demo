@@ -1,6 +1,7 @@
 package me.ashif.sampleapp.data.repo;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 import java.util.List;
 import javax.inject.Inject;
@@ -13,6 +14,8 @@ import me.ashif.sampleapp.data.dao.ContentDao;
 import me.ashif.sampleapp.data.model.ContentModel;
 import me.ashif.sampleapp.data.model.ContentModel.Content;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Ashif on 4/8/17,August,2017
@@ -34,24 +37,22 @@ public class ContentRepository {
     this.mAppExecutors = mAppExecutors;
   }
 
-  public LiveData<Resource<List<Content>>> getContentList() {
-    return new NetworkBoundResource<List<Content>, ContentModel>(mAppExecutors) {
+  public LiveData<List<Content>> getContentList() {
+    final MutableLiveData<List<Content>> contentLiveData = new MutableLiveData<>();
+    mApiService.getContentList().enqueue(new Callback<ContentModel>() {
       @Override
-      protected void saveCallResult(@NonNull ContentModel item) {
-        mContentDao.saveContent(item.getContent());
+      public void onResponse(Call<ContentModel> call, Response<ContentModel> response) {
+        if (response.isSuccessful()) {
+          contentLiveData.setValue(response.body().getContent());
+        }
       }
 
-      @NonNull
       @Override
-      protected LiveData<List<Content>> loadFromDb() {
-        return mContentDao.loadContents();
+      public void onFailure(Call<ContentModel> call, Throwable t) {
+        contentLiveData.setValue(null);
+        // TODO: 4/8/17 should implement better error handling strategy
       }
-
-      @NonNull
-      @Override
-      protected Call<ContentModel> createCall() {
-        return mApiService.getContentList();
-      }
-    }.getAsLiveData();
+    });
+    return contentLiveData;
   }
 }

@@ -72,7 +72,7 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
     mDialogUtils.showProgress(getContext(),getResources().getString(R.string.loading_message));
     homeViewModel.getContentListObservable().observe(this, content -> {
       if (content != null) {
-        ContentAdapter contentAdapter = new ContentAdapter(content.data);
+        ContentAdapter contentAdapter = new ContentAdapter(content);
         mBinding.listContent.setAdapter(contentAdapter);
         mDialogUtils.hideProgress();
       }
