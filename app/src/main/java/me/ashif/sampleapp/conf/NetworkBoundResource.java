@@ -2,6 +2,7 @@ package me.ashif.sampleapp.conf;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
+import android.os.AsyncTask;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -64,7 +65,6 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
                 result.setValue(Resource.success(newData));
               }));
         });
-
   }
 
 //  @MainThread

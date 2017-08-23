@@ -1,5 +1,6 @@
 package me.ashif.sampleapp.util;
 
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import javax.inject.Inject;
@@ -13,7 +14,8 @@ public class DialogUtils {
 
   private static ProgressDialog mProgressDialog;
   @Inject
-  Context mContext;
+  Application mContext;
+  //todo implement context-injection and remove context-param from individual methods
 
 //  public DialogUtils(ProgressDialog mProgressDialog) {
 //    this.mProgressDialog = mProgressDialog;
@@ -22,8 +24,8 @@ public class DialogUtils {
   public DialogUtils() {
   }
 
-  public void showProgress(String message) {
-    mProgressDialog = new ProgressDialog(mContext);
+  public void showProgress(Context context,String message) {
+    mProgressDialog = new ProgressDialog(context);
     if (!mProgressDialog.isShowing()) {
       mProgressDialog.setMessage(message);
       mProgressDialog.show();

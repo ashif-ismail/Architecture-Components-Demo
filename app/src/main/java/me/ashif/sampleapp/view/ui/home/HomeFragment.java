@@ -10,12 +10,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import com.google.firebase.crash.FirebaseCrash;
 import java.io.FileNotFoundException;
 import javax.inject.Inject;
 import me.ashif.sampleapp.R;
 import me.ashif.sampleapp.databinding.FragmentHomeBinding;
 import me.ashif.sampleapp.di.components.Injectable;
+import me.ashif.sampleapp.util.AppConstants.Status;
 import me.ashif.sampleapp.util.DialogUtils;
 import me.ashif.sampleapp.view.adapter.ContentAdapter;
 import timber.log.Timber;
@@ -69,9 +71,9 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
   }
 
   private void observeViewModel(HomeViewModel homeViewModel) {
-    mDialogUtils.showProgress(getResources().getString(R.string.loading_message));
+    mDialogUtils.showProgress(getContext(), getResources().getString(R.string.loading_message));
     homeViewModel.getContentListObservable().observe(this, content -> {
-      if (content != null) {
+      if (content.data != null) {
         ContentAdapter contentAdapter = new ContentAdapter(content.data);
         mBinding.listContent.setAdapter(contentAdapter);
         mDialogUtils.hideProgress();

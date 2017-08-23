@@ -22,5 +22,5 @@ public interface ContentDao {
   void saveContent(List<Content> contentList);
 
   @Query("SELECT * FROM content WHERE id=:id")
-  LiveData<Content> getContent();
+  LiveData<Content> getContent(int id);
 }

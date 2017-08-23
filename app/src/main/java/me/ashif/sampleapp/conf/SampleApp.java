@@ -2,6 +2,7 @@ package me.ashif.sampleapp.conf;
 
 import android.app.Activity;
 import android.app.Application;
+import com.facebook.stetho.Stetho;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
@@ -32,6 +33,7 @@ public class SampleApp extends Application implements HasActivityInjector {
   public void onCreate() {
     super.onCreate();
     AppInjector.init(this);
+    Stetho.initializeWithDefaults(this);
     if (BuildConfig.DEBUG) {
       Timber.plant(new DebugTree());
     } else {
