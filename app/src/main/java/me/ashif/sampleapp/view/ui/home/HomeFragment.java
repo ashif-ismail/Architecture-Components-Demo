@@ -78,6 +78,11 @@ public class HomeFragment extends LifecycleFragment implements Injectable {
         mBinding.listContent.setAdapter(contentAdapter);
         mDialogUtils.hideProgress();
       }
+      else if (content.status == Status.ERROR){
+        Toast.makeText(getActivity(),"something went wrong",Toast.LENGTH_SHORT)
+            .show();
+        mDialogUtils.hideProgress();
+      }
     });
   }
 }

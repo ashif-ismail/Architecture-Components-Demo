@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 
     showHomeAsDefault();
 
-    FirebaseCrash.log("It Works !");
+    FirebaseCrash.log("Faking a Crash !!");
   }
 
   private void showHomeAsDefault() {

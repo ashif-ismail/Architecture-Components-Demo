@@ -67,23 +67,6 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
         });
   }
 
-//  @MainThread
-//  private void saveResult(RequestType response) {
-//    new AsyncTask<Void, Void, Void>() {
-//
-//      @Override
-//      protected Void doInBackground(Void... voids) {
-//        saveCallResult(response);
-//        return null;
-//      }
-//
-//      @Override
-//      protected void onPostExecute(Void aVoid) {
-//        result.addSource(loadFromDb(), newData -> result.setValue(Resource.success(newData)));
-//      }
-//    }.execute();
-//  }
-
   @WorkerThread
   protected abstract void saveCallResult(@NonNull RequestType item);
 
