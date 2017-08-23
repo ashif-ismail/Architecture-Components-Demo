@@ -13,6 +13,7 @@ project.ext {
     ok_http3_downloader = "1.1.0"
     timber = "4.5.1"
     firebase_crash = "10.2.1"
+    stetho = "1.5.0"
 }
 
 android {
@@ -98,6 +99,9 @@ dependencies {
 
     //Firebase CrashReporting
     compile "com.google.firebase:firebase-crash:$project.firebase_crash"
+
+    //Facebook Stetho Dependency
+    debugCompile "com.facebook.stetho:stetho:$project.stetho"
 }
 
 apply plugin: 'com.google.gms.google-services'

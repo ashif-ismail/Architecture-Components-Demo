@@ -25,3 +25,4 @@ public class AppUtils {
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
   }
 }
+
