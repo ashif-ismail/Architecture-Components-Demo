@@ -56,33 +56,33 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
     });
   }
 
-//  private void saveResult(RequestType requestType) {
-//    mAppExecutors.diskIO().execute(
-//        () -> {
-//          saveCallResult(requestType);
-//          mAppExecutors.mainThread().execute(() ->
-//              result.addSource(loadFromDb(), newData -> {
-//                result.setValue(Resource.success(newData));
-//              }));
-//        });
-//  }
-
-  @MainThread
-  private void saveResult(RequestType response) {
-    new AsyncTask<Void, Void, Void>() {
-
-      @Override
-      protected Void doInBackground(Void... voids) {
-        saveCallResult(response);
-        return null;
-      }
-
-      @Override
-      protected void onPostExecute(Void aVoid) {
-        result.addSource(loadFromDb(), newData -> result.setValue(Resource.success(newData)));
-      }
-    }.execute();
+  private void saveResult(RequestType requestType) {
+    mAppExecutors.diskIO().execute(
+        () -> {
+          saveCallResult(requestType);
+          mAppExecutors.mainThread().execute(() ->
+              result.addSource(loadFromDb(), newData -> {
+                result.setValue(Resource.success(newData));
+              }));
+        });
   }
+
+//  @MainThread
+//  private void saveResult(RequestType response) {
+//    new AsyncTask<Void, Void, Void>() {
+//
+//      @Override
+//      protected Void doInBackground(Void... voids) {
+//        saveCallResult(response);
+//        return null;
+//      }
+//
+//      @Override
+//      protected void onPostExecute(Void aVoid) {
+//        result.addSource(loadFromDb(), newData -> result.setValue(Resource.success(newData)));
+//      }
+//    }.execute();
+//  }
 
   @WorkerThread
   protected abstract void saveCallResult(@NonNull RequestType item);
